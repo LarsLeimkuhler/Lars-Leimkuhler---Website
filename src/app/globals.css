@@ -1,26 +1,211 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Color system — Soft Structuralism: silver-grey/white + one quietly desaturated blue */
+  --color-bg: #fbfbfd;
+  --color-bg-elevated: #ffffff;
+  --color-bg-tint: #f4f4f6;
+  --color-bg-deep: #ededf0;
+  --color-ink: #1d1d1f;
+  --color-ink-muted: #6e6e73;
+  --color-ink-faint: #a1a1a6;
+  --color-border: #d2d2d7;
+  --color-border-faint: #e6e6eb;
+  --color-accent: #3b5c7e;
+  --color-accent-soft: #6f8aa8;
+  --color-accent-tint: rgba(59, 92, 126, 0.08);
+
+  /* Tinted ambient shadows — diffused, warm-cool grey */
+  --shadow-ambient-sm: 0 1px 2px rgba(29, 29, 31, 0.04), 0 4px 12px rgba(29, 29, 31, 0.04);
+  --shadow-ambient: 0 1px 2px rgba(29, 29, 31, 0.04), 0 12px 32px rgba(29, 29, 31, 0.06);
+  --shadow-ambient-lg: 0 2px 4px rgba(29, 29, 31, 0.04), 0 28px 64px rgba(29, 29, 31, 0.08);
+  --shadow-island: 0 1px 1px rgba(255, 255, 255, 0.6) inset, 0 0.5px 0 rgba(29, 29, 31, 0.04), 0 12px 32px rgba(29, 29, 31, 0.08);
+
+  /* Type families */
+  --font-display: "Cabinet Grotesk", ui-sans-serif, system-ui, -apple-system, "SF Pro Display", sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-serif: var(--font-source-serif), Georgia, "Iowan Old Style", serif;
+
+  /* Typographic scale — pushed up for "Soft Structuralism massive grotesk" */
+  --text-mega: 9rem;             /* 144px — full editorial poster */
+  --text-mega--line-height: 0.96;
+  --text-mega--letter-spacing: -0.045em;
+
+  --text-display: 6.5rem;        /* 104px — bumped from 5.5rem */
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.04em;
+
+  --text-h1: 3.75rem;            /* 60px — bumped */
+  --text-h1--line-height: 1.06;
+  --text-h1--letter-spacing: -0.028em;
+
+  --text-h2: 2.625rem;           /* 42px */
+  --text-h2--line-height: 1.14;
+  --text-h2--letter-spacing: -0.022em;
+
+  --text-h3: 1.875rem;           /* 30px */
+  --text-h3--line-height: 1.22;
+  --text-h3--letter-spacing: -0.014em;
+
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.5;
+  --text-small--letter-spacing: 0.01em;
+
+  /* Custom cubic-bezier curves — no linear, no ease-in-out */
+  --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --radius-island: 1.75rem;
+  --radius-bezel: 2rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss03", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-bg-elevated);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Numbers feel right with tabular figures */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Headlines breathe with optical wrap */
+  h1, h2 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+@utility prose-essay {
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+  max-width: 38rem;
+}
+
+/* Eyebrow pill — micro-pill that precedes major headings */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-faint);
+  box-shadow: var(--shadow-ambient-sm);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+@utility eyebrow-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+
+/* Grain overlay — fixed, full-bleed, pointer-events-none */
+@utility grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 200px 200px;
+}
+
+/* Double-bezel card */
+@utility bezel {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-faint);
+  border-radius: var(--radius-bezel);
+  box-shadow: var(--shadow-ambient);
+  padding: 0.5rem;
+}
+@utility bezel-inner {
+  background: var(--color-bg-tint);
+  border-radius: calc(var(--radius-bezel) - 0.5rem);
+  padding: 1.75rem;
+}
+
+/* Hero entrance — CSS animation runs forwards from a hidden start.
+   We declare the at-rest state separately so the static page is always readable
+   even if the animation timeline is paused (e.g. in screenshot tools). */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+.hero-rise {
+  opacity: 1;
+  animation: hero-rise 0.9s var(--ease-out-quart, cubic-bezier(0.22, 1, 0.36, 1)) both;
+}
+.hero-bob {
+  animation: hero-bob 2s var(--ease-out-quart, cubic-bezier(0.22, 1, 0.36, 1)) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; opacity: 1; transform: none; }
+  .hero-bob  { animation: none; }
+}
+
+/* Floating fluid island nav surface */
+@utility island {
+  background: color-mix(in oklab, var(--color-bg-elevated) 78%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--color-border-faint);
+  box-shadow: var(--shadow-island);
+  border-radius: 999px;
 }

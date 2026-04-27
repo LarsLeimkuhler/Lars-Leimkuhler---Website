@@ -1,65 +1,166 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowUpRight,
+  Envelope,
+  GithubLogo,
+  LinkedinLogo,
+  MapPin,
+} from "@phosphor-icons/react/dist/ssr";
+import { HeroFull, FeatureSection } from "@/components/scene-stage";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <HeroFull />
+
+      <FeatureSection
+        id="research"
+        index="01"
+        eyebrow="Research"
+        title="Research Papers"
+        body="I am interested in Labour, Personnel Economics and Taxation."
+        href="/research"
+        cta="See papers"
+        imageSrc="/media/research.jpg"
+        imageAlt="Lars working at his desk"
+      />
+
+      <FeatureSection
+        id="teaching"
+        index="02"
+        eyebrow="Teaching"
+        title="Courses Taught and Teaching Philosophy"
+        body="Currently TAing Financial Management (Econ 134A) at UCSB. I focus on building intuition first, then formalising the concepts — and on giving students the kind of hands-on examples I wish I had in undergrad."
+        href="/teaching"
+        cta="See courses & philosophy"
+        imageSrc="/media/teaching.jpg"
+        imageAlt="Lars teaching at the chalkboard"
+        reverse
+      />
+
+      <section id="contact" className="relative pt-24 pb-32 sm:pt-32 sm:pb-44">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10">
+          <div className="grid grid-cols-12 gap-x-6 gap-y-10 items-start">
+            <div className="col-span-12 lg:col-span-4">
+              <span className="font-mono text-[0.6875rem] tracking-[0.18em] uppercase text-ink-muted tabular-nums">
+                03 · Contact me
+              </span>
+              <h2 className="mt-5 font-display text-h1 text-ink leading-[1.04] tracking-[-0.028em]">
+                Say hello.
+              </h2>
+            </div>
+
+            <div className="col-span-12 lg:col-span-8">
+              <p className="text-[1.0625rem] leading-[1.7] text-ink-muted max-w-2xl">
+                The fastest way to reach me is email — I usually reply within a
+                week. If something is on a real deadline, say so in the first
+                line and I&rsquo;ll prioritise it.
+              </p>
+
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <a
+                  href="mailto:lleimkuhler@ucsb.edu"
+                  className="group block bezel transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[var(--shadow-ambient-lg)]"
+                >
+                  <div className="bezel-inner flex items-start justify-between gap-6">
+                    <div>
+                      <span className="font-mono text-[0.6875rem] tracking-[0.14em] uppercase text-ink-muted">
+                        Email
+                      </span>
+                      <p className="mt-3 font-display text-[1.5rem] sm:text-[1.75rem] leading-[1.15] text-ink transition-colors group-hover:text-accent">
+                        lleimkuhler@ucsb.edu
+                      </p>
+                    </div>
+                    <span className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-bg-elevated border border-border-faint transition-all duration-500 group-hover:bg-accent group-hover:border-accent">
+                      <Envelope
+                        weight="regular"
+                        className="w-4 h-4 text-ink transition-colors duration-500 group-hover:text-bg-elevated"
+                      />
+                    </span>
+                  </div>
+                </a>
+
+                <div className="bezel">
+                  <div className="bezel-inner flex items-start justify-between gap-6">
+                    <div>
+                      <span className="font-mono text-[0.6875rem] tracking-[0.14em] uppercase text-ink-muted">
+                        Office
+                      </span>
+                      <p className="mt-3 font-display text-[1.5rem] sm:text-[1.75rem] leading-[1.15] text-ink">
+                        North Hall 2015
+                      </p>
+                    </div>
+                    <span className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-bg-elevated border border-border-faint">
+                      <MapPin weight="regular" className="w-4 h-4 text-ink" />
+                    </span>
+                  </div>
+                </div>
+
+                <a
+                  href="https://www.linkedin.com/in/larsleimkuhler/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bezel transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[var(--shadow-ambient-lg)]"
+                >
+                  <div className="bezel-inner flex items-start justify-between gap-6">
+                    <div>
+                      <span className="font-mono text-[0.6875rem] tracking-[0.14em] uppercase text-ink-muted">
+                        LinkedIn
+                      </span>
+                      <p className="mt-3 font-display text-[1.5rem] sm:text-[1.75rem] leading-[1.15] text-ink transition-colors group-hover:text-accent">
+                        larsleimkuhler
+                      </p>
+                    </div>
+                    <span className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-bg-elevated border border-border-faint transition-all duration-500 group-hover:bg-accent group-hover:border-accent">
+                      <LinkedinLogo
+                        weight="regular"
+                        className="w-4 h-4 text-ink transition-colors duration-500 group-hover:text-bg-elevated"
+                      />
+                    </span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://github.com/LarsLeimkuhler"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bezel transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[var(--shadow-ambient-lg)]"
+                >
+                  <div className="bezel-inner flex items-start justify-between gap-6">
+                    <div>
+                      <span className="font-mono text-[0.6875rem] tracking-[0.14em] uppercase text-ink-muted">
+                        GitHub
+                      </span>
+                      <p className="mt-3 font-display text-[1.5rem] sm:text-[1.75rem] leading-[1.15] text-ink transition-colors group-hover:text-accent">
+                        LarsLeimkuhler
+                      </p>
+                    </div>
+                    <span className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-bg-elevated border border-border-faint transition-all duration-500 group-hover:bg-accent group-hover:border-accent">
+                      <GithubLogo
+                        weight="regular"
+                        className="w-4 h-4 text-ink transition-colors duration-500 group-hover:text-bg-elevated"
+                      />
+                    </span>
+                  </div>
+                </a>
+              </div>
+
+              <Link
+                href="/contact"
+                className="group mt-10 inline-flex items-center gap-3 text-ink text-[0.9375rem] font-medium"
+              >
+                <span>Or use the contact form</span>
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-bg-elevated border border-border-faint transition-all duration-500 group-hover:bg-accent group-hover:border-accent group-hover:rotate-45">
+                  <ArrowUpRight
+                    weight="regular"
+                    className="w-4 h-4 text-ink transition-colors duration-500 group-hover:text-bg-elevated"
+                  />
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
