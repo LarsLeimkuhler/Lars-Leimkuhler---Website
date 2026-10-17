@@ -64,6 +64,15 @@
   --radius-bezel: 2rem;
 }
 
+/* Smaller headings on phones so long titles do not wrap to 4+ lines */
+@media (max-width: 639px) {
+  :root {
+    --text-h1: 2.5rem;
+    --text-h2: 2rem;
+    --text-h3: 1.5rem;
+  }
+}
+
 @layer base {
   html {
     background: var(--color-bg);

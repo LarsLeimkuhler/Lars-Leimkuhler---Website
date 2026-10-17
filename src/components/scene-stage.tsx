@@ -49,7 +49,7 @@ export function HeroFull() {
         <img
           src="/media/hero.jpg"
           alt="Portrait of Lars Leimkühler"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover max-sm:object-[70%_50%] max-sm:scale-[1.25] max-sm:origin-bottom"
           decoding="async"
           fetchPriority="high"
         />
@@ -131,7 +131,7 @@ export function HeroFull() {
       <a
         href="#teaching"
         aria-label="Scroll to teaching"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 inline-flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:inline-flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors"
       >
         <span className="font-mono text-[0.625rem] tracking-[0.18em] uppercase">
           Scroll

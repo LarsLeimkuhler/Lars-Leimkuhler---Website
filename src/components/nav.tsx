@@ -25,8 +25,9 @@ export function Nav() {
           aria-label="Lars Leimkuhler — Home"
         >
           <span aria-hidden className="eyebrow-dot" />
-          <span className="font-display text-[0.9375rem] font-bold tracking-tight text-ink">
-            Lars Leimk&uuml;hler
+          <span className="font-display text-[0.9375rem] font-bold tracking-tight text-ink whitespace-nowrap">
+            <span className="sm:hidden">Lars L.</span>
+            <span className="hidden sm:inline">Lars Leimk&uuml;hler</span>
           </span>
         </Link>
 
@@ -39,7 +40,7 @@ export function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="relative inline-flex items-center px-3.5 py-2 rounded-full text-[0.875rem] text-ink-muted transition-colors duration-300 hover:text-ink"
+                  className="relative inline-flex items-center px-2.5 sm:px-3.5 py-2 rounded-full text-[0.875rem] text-ink-muted transition-colors duration-300 hover:text-ink"
                 >
                   {isActive && (
                     <motion.span
