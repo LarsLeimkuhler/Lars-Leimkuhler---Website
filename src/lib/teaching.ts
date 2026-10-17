@@ -7,20 +7,25 @@ export type Course = {
 
 export const courses: Course[] = [
   {
+    code: "Econ 5",
+    title: "Statistics for Economics",
+    quarters: ["Fall 2025", "Fall 2026"],
+    current: true,
+  },
+  {
     code: "Econ 134A",
     title: "Financial Management",
     quarters: ["Fall 2024", "Winter 2025", "Summer 2025", "Spring 2026"],
-    current: true,
+  },
+  {
+    code: "Econ 140B",
+    title: "Econometrics",
+    quarters: ["Summer 2026"],
   },
   {
     code: "Econ 152",
     title: "Personnel Economics",
     quarters: ["Winter 2026"],
-  },
-  {
-    code: "Econ 5",
-    title: "Statistics for Economics",
-    quarters: ["Fall 2025"],
   },
   {
     code: "Econ 2",

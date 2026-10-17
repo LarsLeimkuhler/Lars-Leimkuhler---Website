@@ -30,7 +30,7 @@ export default function Home() {
         index="02"
         eyebrow="Teaching"
         title="Courses Taught and Teaching Philosophy"
-        body="Currently TAing Financial Management (Econ 134A) at UCSB. I focus on building intuition first, then formalising the concepts — and on giving students the kind of hands-on examples I wish I had in undergrad."
+        body="Currently TAing Statistics for Economics (Econ 5) at UCSB, and I have been nominated for a UCSB-wide teaching award. Last year I also mentored a first-year PhD student through the program. I focus on building intuition first, then formalising the concepts."
         href="/teaching"
         cta="See courses & philosophy"
         imageSrc="/media/teaching.jpg"
@@ -52,9 +52,7 @@ export default function Home() {
 
             <div className="col-span-12 lg:col-span-8">
               <p className="text-[1.0625rem] leading-[1.7] text-ink-muted max-w-2xl">
-                The fastest way to reach me is email — I usually reply within a
-                week. If something is on a real deadline, say so in the first
-                line and I&rsquo;ll prioritise it.
+                Email is the fastest way to reach me.
               </p>
 
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">

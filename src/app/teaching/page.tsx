@@ -21,11 +21,13 @@ export default function TeachingPage() {
           </Reveal>
           <Reveal index={1}>
             <p className="mt-8 text-[1.125rem] leading-[1.65] text-ink-muted max-w-2xl">
-              So far, I have TA&rsquo;ed four courses across the major in two
-              years (some of them multiple times!). The range of subjects
-              includes introductory macroeconomics, financial economics and
-              labour classes. You can find the teaching philosophy behind how I
-              run sections below.
+              So far, I have TA&rsquo;ed five courses across the major in two
+              years (some of them multiple times!), ranging from introductory
+              macroeconomics and statistics to financial economics,
+              econometrics and labour classes. I have been nominated for a
+              UCSB-wide teaching award and mentored a first-year PhD student
+              last year. You can find the teaching philosophy behind how I run
+              sections below.
             </p>
           </Reveal>
         </div>
